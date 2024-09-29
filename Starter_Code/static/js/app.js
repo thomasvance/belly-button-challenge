@@ -4,11 +4,13 @@ function buildMetadata(sample) {
 
     // get the metadata field
     let metaData = data.metadata;
+    console.log(metaData)
     
 
     // Filter the metadata for the object with the desired sample number
     let metaArray = metaData.filter(sampleObj => sampleObj.id == sample);
     let meta = metaArray[0];
+    
 
     // Use d3 to select the panel with id of `#sample-metadata`
     let metaPanel = d3.select("#sample-metadata");
@@ -31,6 +33,7 @@ function buildCharts(sample) {
 
     // Get the samples field
     let samples = data.samples;
+    console.log(samples)
 
     // Filter the samples for the object with the desired sample number
     let metaArray = samples.filter(sampleObj => sampleObj.id == sample);
@@ -53,7 +56,7 @@ function buildCharts(sample) {
       {
         x: otu_ids,
         y: sample_values,
-        text:otu_labels,
+        text: otu_labels,
         mode: "markers",
         marker: {
           
@@ -73,6 +76,7 @@ function buildCharts(sample) {
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
     let ytick = otu_ids.slice(0,10).map(otuID => `OTU ${otuID}`).reverse();
+    console.log(ytick)
 
 
     // Build a Bar Chart
@@ -106,6 +110,7 @@ function init() {
 
     // Use d3 to select the dropdown with id of `#selDataset`
     let selector = d3.select("#selDataset");
+    console.log(sampNames)
 
     // Use the list of sample names to populate the select options
     // Hint: Inside a loop, you will need to use d3 to append a new
